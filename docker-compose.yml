@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  db:
+    container_name: mongo-dev
+    image: mongo
+    networks:
+      - mongo-compose-network
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./data:/data/db
+
+networks:
+  mongo-compose-network:
+    driver: bridge
