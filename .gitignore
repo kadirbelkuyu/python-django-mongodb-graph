@@ -6,3 +6,5 @@ VENV
 __pycache__/
 
 *.wt
+
+data/
