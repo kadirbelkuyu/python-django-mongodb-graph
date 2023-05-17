@@ -31,7 +31,7 @@ from ..models import Node
 #         children = Node.objects.filter(parent=instance.id)
 #         return NodeSerializer(children, many=True).data
 
-
+#v2
 class ParentChildNodeSerializer(DocumentSerializer):
     class Meta:
         model = Node
@@ -39,7 +39,11 @@ class ParentChildNodeSerializer(DocumentSerializer):
 
 class NodeSerializer(DocumentSerializer):
     parent = serializers.StringRelatedField(allow_null=True)
-    children = serializers.SerializerMethodField()
+    # children = serializers.SerializerMethodField()
+    # children = StringRelatedField(many=True)
+    children = ParentChildNodeSerializer(many=True, read_only=True)   
+    depth = 1 
+    # children = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = Node
@@ -49,3 +53,30 @@ class NodeSerializer(DocumentSerializer):
     def get_children(self, instance):
         children = Node.objects.filter(parent=instance.id)
         return NodeSerializer(children, many=True).data
+
+# v3
+# from rest_framework.relations import StringRelatedField
+# from rest_framework_mongoengine.serializers import DocumentSerializer
+# from rest_framework import serializers
+# from ..models import Node
+
+
+# class ChildrenSerializer(DocumentSerializer):
+#     class Meta:
+#         model = Node
+#         fields = ('id', 'name', 'type')
+
+
+# class NodeSerializer(DocumentSerializer):
+#     parent = serializers.StringRelatedField(allow_null=True)
+#     children = serializers.SerializerMethodField()
+
+#     class Meta:
+#         model = Node
+#         fields = '__all__'
+#         depth = 1
+
+#     def get_children(self, instance):
+#         children = Node.objects.filter(parent=instance.id)
+#         return ChildrenSerializer(children, many=True).data
+

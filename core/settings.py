@@ -91,7 +91,10 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': '',
+        'ENGINE': 'djongo',
+        'NAME': 'sporcutakip',
+        'HOST': '127.0.0.1',
+        'PORT': 27017,
     }
 }
 connect(db='sporcutakip', host='127.0.0.1', port=27017)
