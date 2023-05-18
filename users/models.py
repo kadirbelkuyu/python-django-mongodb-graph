@@ -15,6 +15,7 @@ class User(Document):
     adress = StringField(max_length=100)
     otherAddress = StringField(max_length=100)
     isActive = BooleanField(default=True)
+    permission = StringField(max_length=100)
     createdDate = DateTimeField(default=datetime.datetime.now, blank=True)
     modifiedDate = DateTimeField(default=datetime.datetime.now, blank=True)
     super_admin = BooleanField(default=False)

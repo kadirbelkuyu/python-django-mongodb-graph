@@ -9,11 +9,14 @@ class Node(Document):
     BRANCH = 'Branş'
     TEAM = 'Takım'
     CATEGORY = 'Kategori'
+    Kurum = 'Kurum'
+
 
     NODE_TYPE_CHOICES = [
         (BRANCH, 'Branş'),
         (TEAM, 'Takım'),
         (CATEGORY, 'Kategori'),
+        (Kurum, 'Kurum'),
     ]
 
     name = StringField(max_length=100)

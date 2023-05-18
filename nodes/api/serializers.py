@@ -27,7 +27,11 @@ class NodeSerializer(DocumentSerializer):
                 "id": str(child.id),
                 "name": child.name,
                 "type": child.type,
-                "children": self.get_children(child)
+                "children": self.get_children(child),
+                "teachers": child.teachers,
+                "managers": child.managers,
+                "students": child.students,
+                "student_performance_labels": child.student_performance_labels,
             }
             children_data.append(child_data)
 
