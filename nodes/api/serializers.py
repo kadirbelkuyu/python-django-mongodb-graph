@@ -1,4 +1,3 @@
-from mongoengine import ObjectIdField
 from rest_framework_mongoengine.serializers import DocumentSerializer
 from rest_framework import serializers
 from ..models import Node
@@ -9,8 +8,9 @@ class RecursiveField(serializers.Serializer):
         serializer = self.parent.parent.__class__(instance, context=self.context)
         return serializer.data
 
+
 class NodeSerializer(DocumentSerializer):
-    parent = ObjectIdField(null=True)
+    parent = serializers.CharField(read_only=True, allow_null=True)
     children = serializers.SerializerMethodField()
 
     class Meta:
@@ -43,4 +43,3 @@ class NodeSerializer(DocumentSerializer):
         else:
             instance = Node.objects.create(**validated_data)
         return instance
-

@@ -26,6 +26,7 @@ class Node(Document):
     created_at = DateTimeField()
     updated_at = DateTimeField()
     children = ListField(ReferenceField('self', reverse_delete_rule=4))
+    isactive = BooleanField(default=True)
 
 
 
