@@ -7,8 +7,3 @@ class UserSerializer(DocumentSerializer):
         model = User
         fields = '__all__'
         depth = 1
-class UserDetailSerializer(DocumentSerializer):
-    class Meta:
-        model = User
-        fields = '__all__'
-        depth = 1

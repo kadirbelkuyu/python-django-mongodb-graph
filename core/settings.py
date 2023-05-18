@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'django_mongoengine',
     'rest_framework',
     'drf_yasg',
     'users',
@@ -91,11 +92,22 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': '',
+        'ENGINE': 'djongo',
+        'NAME': 'sporcutakip',
+        'HOST': '127.0.0.1',
+        'PORT': 27017,
     }
 }
 connect(db='sporcutakip', host='127.0.0.1', port=27017)
 
+
+MONGODB_DATABASES = {
+    "default": {
+        "name": 'sporcutakip',
+        "host": '127.0.0.1:27017',
+        "tz_aware": True, # if you using timezones in django (USE_TZ = True)
+    },
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
