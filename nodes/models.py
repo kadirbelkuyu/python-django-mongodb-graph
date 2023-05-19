@@ -1,7 +1,7 @@
 
 from django.db import models
 from django.db.models.functions import datetime
-from mongoengine import Document, StringField, ListField, DateTimeField, ReferenceField, BooleanField
+from mongoengine import Document, StringField, ListField, DateTimeField, ReferenceField, BooleanField, IntField
 from users.models import User
 
 

@@ -1,5 +1,5 @@
 from django.db.models.functions import datetime
-from mongoengine import Document, StringField, BooleanField, DateTimeField
+from mongoengine import Document, StringField, BooleanField, DateTimeField, ListField, ReferenceField, IntField
 
 
 class User(Document):
