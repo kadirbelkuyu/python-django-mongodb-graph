@@ -40,3 +40,4 @@ def graph(request, node_id=None):
     }
 
     return JsonResponse(graph_data)
+

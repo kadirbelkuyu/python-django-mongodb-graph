@@ -1,9 +1,13 @@
-
-from django.db import models
-from django.db.models.functions import datetime
 from mongoengine import Document, StringField, ListField, DateTimeField, ReferenceField, BooleanField, IntField
 from users.models import User
 
+
+class PerformanceLabel(Document):
+    label = StringField(max_length=100, null=True)
+    value = IntField(null=True)
+    user = ReferenceField(User, reverse_delete_rule=4, null=True)
+    parent = ReferenceField('self', reverse_delete_rule=4, null=True)
+    children = ListField(ReferenceField('self', reverse_delete_rule=4), null=True)
 
 class Node(Document):
     BRANCH = 'Branş'
@@ -23,13 +27,15 @@ class Node(Document):
     teachers = ListField(ReferenceField(User, reverse_delete_rule=4))
     managers = ListField(ReferenceField(User, reverse_delete_rule=4))
     students = ListField(ReferenceField(User, reverse_delete_rule=4))
-    student_performance_labels = ListField(StringField())
+    # student_performance_labels = ListField(StringField())
+    student_performance_labels = ListField(ReferenceField(PerformanceLabel, reverse_delete_rule=4), null=True)
     type = StringField(choices=NODE_TYPE_CHOICES, max_length=10)
     parent = ReferenceField('self', reverse_delete_rule=4, null=True)
     created_at = DateTimeField()
     updated_at = DateTimeField()
     children = ListField(ReferenceField('self', reverse_delete_rule=4))
     isactive = BooleanField(default=True)
+
 
 
 
