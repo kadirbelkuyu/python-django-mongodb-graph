@@ -1,11 +1,1 @@
-# python env gitignore
-venv/
-env/
-ENV/
-VENV
-__pycache__/
-
-*.wt
-
 data/
-data/*
